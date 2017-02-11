@@ -11,9 +11,9 @@ DOGHUMDES="A (pseudo) packet manager for Dokter's bash scripts and rpms hosted o
 # Settings --------------------------------------------------------------------------
 DOGHUMCOM=$1
 DOGHUMARG=$2
-DOGHUMBSH=$(curl -s --connect-timeout 10 https://raw.githubusercontent.com/DokterW/doghum/blob/master/doghumbsh)
-DOGHUMRPM=$(curl -s --connect-timeout 10 https://raw.githubusercontent.com/DokterW/doghum/blob/master/doghumrpm)
-# DOGHUMRDM=$(curl -s --connect-timeout 10 https://raw.githubusercontent.com/DokterW/doghum/blob/master/doghumman)
+DOGHUMBSH=$(curl -s --connect-timeout 10 https://raw.githubusercontent.com/DokterW/doghum/master/doghumbsh)
+DOGHUMRPM=$(curl -s --connect-timeout 10 https://raw.githubusercontent.com/DokterW/doghum/master/doghumrpm)
+# DOGHUMRDM=$(curl -s --connect-timeout 10 https://raw.githubusercontent.com/DokterW/doghum/master/doghumman)
 DOGHUMRPN=".x86_64.rpm"
 DOGHUMBSN="start.sh"
 # Functions -------------------------------------------------------------------------
