@@ -11,9 +11,9 @@ fi
 if [ ! -d $HOME/.dokter/doghum ]; then
     mkdir $HOME/.dokter/dogum
 fi
-wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/doghum/master/doghum/start.sh -P $HOME/.dokter/.doghum/start.sh
-if [ ! -x $HOME/.dokter/.doghum/start.sh ]; then
-    chmod +x $HOME/.dokter/.doghum/start.sh
+wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/doghum/master/start.sh -P $HOME/.dokter/doghum/start.sh
+if [ ! -x $HOME/.dokter/doghum/start.sh ]; then
+    chmod +x $HOME/.dokter/doghum/start.sh
 fi
 echo "alias doghum='$HOME/.dokter/doghum/start.sh'" >> $HOME/.bashrc
 alias doghum='$HOME/.dokter/doghum/start.sh'
