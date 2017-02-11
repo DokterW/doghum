@@ -1,5 +1,5 @@
 #!/bin/bash
-# Dokter's GitHub Manager v0.1
+# Dokter's GitHub Manager v0.2
 # Made by Dr. Waldijk
 # A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub
 # Read the README.md for more info.
@@ -35,7 +35,7 @@ doghumurlverfetch () {
 }
 doghumbashdl () {
     # Download bash script and make it an executable if it's not.
-    wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/$DOGHUMARG/master/$DOGHUMBSN -P $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN
+    wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/$DOGHUMARG/master/$DOGHUMBSN -P $HOME/.dokter/$DOGHUMARG/
     if [ ! -x $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN ]; then
         chmod +x $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN
     fi
@@ -55,7 +55,8 @@ elif [ "$DOGHUMCOM" = install ] && [ -n "$DOGHUMARG" ]; then
             doghumbashdl
             echo "alias $DOGHUMARG='$HOME/.dokter/$DOGHUMARG/$DOGHUMBSN'" >> $HOME/.bashrc
             # Adding alias so user don't need to restart terminal.
-            alias $DOGHUMARG='$HOME/.dokter/$DOGHUMARG/$DOGHUMBSN'
+            # It does not work. I will fix that later.
+            # alias $DOGHUMARG='$HOME/.dokter/$DOGHUMARG/$DOGHUMBSN'
         else
             echo "You cannot install a bash script that is already installed."
         fi
