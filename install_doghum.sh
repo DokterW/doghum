@@ -5,6 +5,12 @@
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
 # -----------------------------------------------------------------------------------
+if [ ! -d $HOME/.dokter ]; then
+    mkdir $HOME/.dokter
+fi
+if [ ! -d $HOME/.dokter/doghum ]; then
+    mkdir $HOME/.dokter/dogum
+fi
 wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/doghum/master/doghum/start.sh -P $HOME/.dokter/.doghum/start.sh
 if [ ! -x $HOME/.dokter/.doghum/start.sh ]; then
     chmod +x $HOME/.dokter/.doghum/start.sh
