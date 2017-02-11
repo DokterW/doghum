@@ -35,7 +35,7 @@ doghumurlverfetch () {
 }
 doghumbashdl () {
     # Download bash script and make it an executable if it's not.
-    wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/$DOGHUMARG/master/$DOGHUMARG/$DOGHUMBSN -P $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN
+    wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/$DOGHUMARG/master/$DOGHUMBSN -P $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN
     if [ ! -x $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN ]; then
         chmod +x $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN
     fi
