@@ -1,11 +1,11 @@
 #!/bin/bash
-# Dokter's GitHub Manager v0.2
+# Dokter's GitHub Manager v0.3
 # Made by Dr. Waldijk
 # A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
 # Standard --------------------------------------------------------------------------
-DOGHUMVER="0.2"
+DOGHUMVER="0.3"
 DOGHUMNAM="Dokter's GitHub Manager"
 DOGHUMDES="A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub."
 # Settings --------------------------------------------------------------------------
@@ -19,18 +19,18 @@ DOGHUMBSN="start.sh"
 # Functions -------------------------------------------------------------------------
 doghumchk () {
     # Check if it's a bash script or a rpm.
-    DOGHUMCHK1=$(echo "$DOGHUMBSH" | cut -d , -f 1 | grep $DOGHUMARG | tr '[:upper:]' '[:lower:]')
-    DOGHUMCHK2=$(echo "$DOGHUMRPM" | cut -d , -f 1 | grep $DOGHUMARG | tr '[:upper:]' '[:lower:]')
+    DOGHUMCHK1=$(echo "$DOGHUMBSH" | cut -d , -f 1 | tr '[:upper:]' '[:lower:]' | grep $DOGHUMARG)
+    DOGHUMCHK2=$(echo "$DOGHUMRPM" | cut -d , -f 1 | tr '[:upper:]' '[:lower:]' | grep $DOGHUMARG)
 }
 doghumurlverfetch () {
-    if [ -n $DOGHUMCHK1 ]; then
+    if [ "$DOGHUMARG" = "$DOGHUMCHK1" ]; then
         # Regex out the version.
-        DOGHUMLTS=$(curl -ILs -o /dev/null -w %{url_effective} https://github.com/DokterW/$DOGHUMARG/releases/latest | egrep -o '([0-9]{1,2}\.)*[0-9]{1,2}')
-    elif [ -n $DOGHUMCHK2 ]; then
+        DOGHUMLTS=$(curl -ILs -o /dev/null -w %{url_effective} --connect-timeout 10 https://github.com/DokterW/$DOGHUMARG/releases/latest | egrep -o '([0-9]{1,2}\.)*[0-9]{1,2}')
+    elif [ "$DOGHUMARG" = "$DOGHUMCHK2" ]; then
         # Fetch latest version URL.
-        DOGHUMURL=$(curl -ILs -o /dev/null -w %{url_effective} https://github.com/$DOGHUMARG/$DOGHUMARG/releases/latest)
+        DOGHUMURL=$(curl -ILs -o /dev/null -w %{url_effective} --connect-timeout 10 https://github.com/$DOGHUMARG/$DOGHUMARG/releases/latest)
         # Same as above, but regex out the version.
-        DOGHUMLTS=$(curl -ILs -o /dev/null -w %{url_effective} https://github.com/$DOGHUMARG/$DOGHUMARG/releases/latest | egrep -o '([0-9]{1,2}\.)*[0-9]{1,2}')
+        DOGHUMLTS=$(curl -ILs -o /dev/null -w %{url_effective} --connect-timeout 10 https://github.com/$DOGHUMARG/$DOGHUMARG/releases/latest | egrep -o '([0-9]{1,2}\.)*[0-9]{1,2}')
     fi
 }
 doghumbashdl () {
@@ -46,7 +46,7 @@ if [ "$DOGHUMCOM" = install ] && [ -z "$DOGHUMARG" ]; then
     echo "Type 'dogum list' to get a list of available scripts and software."
 elif [ "$DOGHUMCOM" = install ] && [ -n "$DOGHUMARG" ]; then
     doghumchk
-    if [ -n $DOGHUMCHK1 ]; then
+    if [ "$DOGHUMARG" = "$DOGHUMCHK1" ]; then
         if [ ! -e $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN ]; then
             if [ ! -d $HOME/.dokter ]; then
                 mkdir $HOME/.dokter
@@ -60,9 +60,10 @@ elif [ "$DOGHUMCOM" = install ] && [ -n "$DOGHUMARG" ]; then
         else
             echo "You cannot install a bash script that is already installed."
         fi
-    elif [ -n $DOGHUMCHK2 ]; then
+    elif [ "$DOGHUMARG" = "$DOGHUMCHK2" ]; then
         if [ ! -e /bin/$DOGHUMARG ]; then
             doghumurlverfetch
+            # Download URL
             DOGHUMDLD="https://github.com/$DOGHUMARG/$DOGHUMARG/releases/download/v"
             wget -q --show-progress $DOGHUMDLD$DOGHUMLTS/$DOGHUMARG$DOGHUMRPN -P /tmp/
             sudo dnf -y install /tmp/$DOGHUMARG$DOGHUMRPN
@@ -76,7 +77,7 @@ elif [ "$DOGHUMCOM" = upgrade ] && [ -z "$DOGHUMARG" ]; then
     echo "Type 'dogum list' to get a list of available scripts and software."
 elif [ "$DOGHUMCOM" = upgrade ] && [ -n "$DOGHUMARG" ]; then
     doghumchk
-    if [ -n $DOGHUMCHK1 ]; then
+    if [ "$DOGHUMARG" = "$DOGHUMCHK1" ]; then
         if [ -e $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN ]; then
             doghumurlverfetch
             DOGHUMIND=$(cat $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN | sed -n "2p" | egrep -o '([0-9]{1,2}\.)*[0-9]{1,2}')
@@ -86,9 +87,11 @@ elif [ "$DOGHUMCOM" = upgrade ] && [ -n "$DOGHUMARG" ]; then
                 echo "You already have the latest version of $DOGHUMARG v$DOGHUMLTS installed."
             fi
         fi
-    elif [ -n $DOGHUMCHK2 ]; then
+    elif [ "$DOGHUMARG" = "$DOGHUMCHK2" ]; then
         if [ -e /bin/$DOGHUMARG ]; then
             doghumurlverfetch
+            # Download URL
+            DOGHUMDLD="https://github.com/$DOGHUMARG/$DOGHUMARG/releases/download/v"
             # Fetch version of installed software.
             DOGHUMIND=$(dnf info $DOGHUMARG --cacheonly | grep Version | egrep -o '([0-9]{1,2}\.)*[0-9]{1,2}')
             if [ "$DOGHUMLTS" != "$DOGHUMIND" ]; then
@@ -135,10 +138,10 @@ elif [ "$DOGHUMCOM" = list ]; then
     echo "$DOGHUMBSH" | cut -d , -f 1
 elif [ "$DOGHUMCOM" = version ]; then
     echo $DOGHUMNAM - v$DOGHUMVER
-elif [ -n "$DOGHUMCOM" ] && [ -z "$DOGHUMARG" ]; then
-    echo "$DOGHUMCOM is invalid."
-elif [ -n "$DOGHUMCOM" ] && [ -n "$DOGHUMARG" ]; then
-    echo "$DOGHUMCOM & $DOGHUMARG are invalid."
+#elif [ -n "$DOGHUMCOM" ] && [ -z "$DOGHUMARG" ]; then
+#    echo "$DOGHUMCOM is invalid."
+#elif [ -n "$DOGHUMCOM" ] && [ -n "$DOGHUMARG" ]; then
+#    echo "$DOGHUMCOM & $DOGHUMARG are invalid."
 else
     echo $DOGHUMNAM - v$DOGHUMVER
     echo $DOGHUMDES

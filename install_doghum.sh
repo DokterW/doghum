@@ -16,4 +16,4 @@ if [ ! -x $HOME/.dokter/doghum/start.sh ]; then
     chmod +x $HOME/.dokter/doghum/start.sh
 fi
 echo "alias doghum='$HOME/.dokter/doghum/start.sh'" >> $HOME/.bashrc
-alias doghum='$HOME/.dokter/doghum/start.sh'
+# alias doghum='$HOME/.dokter/doghum/start.sh'
