@@ -9,7 +9,7 @@ if [ ! -d $HOME/.dokter ]; then
     mkdir $HOME/.dokter
 fi
 if [ ! -d $HOME/.dokter/doghum ]; then
-    mkdir $HOME/.dokter/dogum
+    mkdir $HOME/.dokter/doghum
 fi
 wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/doghum/master/start.sh -P $HOME/.dokter/doghum/
 if [ ! -x $HOME/.dokter/doghum/start.sh ]; then
