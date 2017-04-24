@@ -1,11 +1,11 @@
 #!/bin/bash
-# Dokter's GitHub Manager v0.3
+# Dokter's GitHub Manager v0.4
 # Made by Dr. Waldijk
 # A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
 # Standard --------------------------------------------------------------------------
-DOGHUMVER="0.3"
+DOGHUMVER="0.4"
 DOGHUMNAM="Dokter's GitHub Manager"
 DOGHUMDES="A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub."
 # Settings --------------------------------------------------------------------------
@@ -54,6 +54,7 @@ elif [ "$DOGHUMCOM" = install ] && [ -n "$DOGHUMARG" ]; then
             mkdir $HOME/.dokter/$DOGHUMARG
             doghumbashdl
             echo "alias $DOGHUMARG='$HOME/.dokter/$DOGHUMARG/$DOGHUMBSN'" >> $HOME/.bashrc
+            source $HOME/.bashrc
             # Adding alias so user don't need to restart terminal.
             # It does not work. I will fix that later.
             # alias $DOGHUMARG='$HOME/.dokter/$DOGHUMARG/$DOGHUMBSN'
