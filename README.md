@@ -39,4 +39,5 @@ By only running *doghum* it will show above list of commands.
 
 ### Changelog
 
-*empty*
+#### 2017-04-23
+* Reloads .bashrc when installing a new bash script.
