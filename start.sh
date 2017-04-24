@@ -1,11 +1,11 @@
 #!/bin/bash
-# Dokter's GitHub Manager v0.4
+# Dokter's GitHub Manager v0.5
 # Made by Dr. Waldijk
 # A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
 # Standard --------------------------------------------------------------------------
-DOGHUMVER="0.4"
+DOGHUMVER="0.5"
 DOGHUMNAM="Dokter's GitHub Manager"
 DOGHUMDES="A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub."
 # Settings --------------------------------------------------------------------------
@@ -135,8 +135,8 @@ elif [ "$DOGHUMCOM" = list ]; then
 #    DOGHUMDL2=$(echo "$DOGHUMBSH" | cut -d , -f 2)
     echo $DOGHUMNAM - v$DOGHUMVER
     echo ""
-    echo "$DOGHUMRPM" | cut -d , -f 1
-    echo "$DOGHUMBSH" | cut -d , -f 1
+    echo "$DOGHUMRPM" | cut -d , -f 1,2 | sed 's/,/ - /g'
+    echo "$DOGHUMBSH" | cut -d , -f 1,2 | sed 's/,/ - /g'
 elif [ "$DOGHUMCOM" = version ]; then
     echo $DOGHUMNAM - v$DOGHUMVER
 #elif [ -n "$DOGHUMCOM" ] && [ -z "$DOGHUMARG" ]; then
