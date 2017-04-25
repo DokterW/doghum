@@ -54,7 +54,7 @@ elif [ "$DOGHUMCOM" = install ] && [ -n "$DOGHUMARG" ]; then
             mkdir $HOME/.dokter/$DOGHUMARG
             doghumbashdl
             echo "alias $DOGHUMARG='$HOME/.dokter/$DOGHUMARG/$DOGHUMBSN'" >> $HOME/.bashrc
-            source $HOME/.bashrc
+            source ~/.bashrc
             # Adding alias so user don't need to restart terminal.
             # It does not work. I will fix that later.
             # alias $DOGHUMARG='$HOME/.dokter/$DOGHUMARG/$DOGHUMBSN'

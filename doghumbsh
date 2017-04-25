@@ -3,4 +3,5 @@ fnugg,A simple weather script that fetches weather data from darksky.net.
 LazyGit,The perfect script for a lazy git.
 LazyLudicr,Create encrypted disk images with LUKS -- the lazy way.
 reSHsync,A simple manager for your Resilio Sync folders.
+shETHer,A simple script that fetches ETH rate from coinbase.com.
 SHmugr,Switch between runlevel 3 & 5.
