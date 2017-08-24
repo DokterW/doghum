@@ -6,4 +6,4 @@
 # By running this script you agree to the license terms.
 # -----------------------------------------------------------------------------------
 wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/doghum/master/start.sh -P $HOME/.dokter/doghum/
-rm $HOME/.dokter/doghum/upgrade_doghum.sh
+# rm $HOME/.dokter/doghum/upgrade_doghum.sh
