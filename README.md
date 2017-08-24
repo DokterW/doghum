@@ -1,6 +1,6 @@
 # Dokter's GitHub Manager
 
-A (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub.
+A (pseudo) packet manager for rpms hosted on GitHub and Dokter's bash scripts.
 
 Which is the gist of what this bash script is.
 
@@ -38,6 +38,9 @@ By only running *doghum* it will show above list of commands.
 * Add the ability to add your own, local repos.
 
 ### Changelog
+
+#### 2017-08-24
+* Rewritten the code a bit for better error handling.
 
 #### 2017-04-23
 * Reloads .bashrc when installing a new bash script.

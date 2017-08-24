@@ -1,7 +1,7 @@
 #!/bin/bash
 # Dokter's GitHub Manager (install) v0.3
 # Made by Dr. Waldijk
-# Installer for the (pseudo) packet manager for Dokter's bash scripts and rpms hosted on GitHub
+# Installer for a (pseudo) packet manager for rpms hosted on GitHub and Dokter's bash scripts.
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
 # -----------------------------------------------------------------------------------
