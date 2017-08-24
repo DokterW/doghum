@@ -1,11 +1,11 @@
 #!/bin/bash
-# Dokter's GitHub Manager v0.8
+# Dokter's GitHub Manager v0.9
 # Made by Dr. Waldijk
 # A (pseudo) packet manager for rpms hosted on GitHub and Dokter's bash scripts.
 # Read the README.md for more info.
 # By running this script you agree to the license terms.
 # Standard --------------------------------------------------------------------------
-DOGHUMVER="0.8"
+DOGHUMVER="0.9"
 DOGHUMNAM="Dokter's GitHub Manager"
 DOGHUMDES="A (pseudo) packet manager for rpms hosted on GitHub and Dokter's bash scripts."
 # Settings --------------------------------------------------------------------------
@@ -85,8 +85,8 @@ elif [[ "$DOGHUMCOM" = "upgrade" ]] && [[ -n "$DOGHUMARG" ]]; then
         if [[ -d $HOME/.dokter/$DOGHUMARG ]]; then
             doghumurlverfetch
             DOGHUMIND=$(cat $HOME/.dokter/$DOGHUMARG/$DOGHUMBSN | sed -n "2p" | egrep -o '([0-9]{1,2}\.)*[0-9]{1,2}')
-            if [ "$DOGHUMLTS" != "$DOGHUMIND" ]; then
-                if [ "$DOGHUMARG" = "doghum" ]; then
+            if [[ "$DOGHUMLTS" != "$DOGHUMIND" ]]; then
+                if [[ "$DOGHUMARG" = "doghum" ]]; then
                     wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/doghum/master/upgrade_doghum.sh -P $HOME/.dokter/doghum/
                     exec $HOME/.dokter/doghum/upgrade_doghum.sh
                 else
