@@ -88,6 +88,7 @@ elif [[ "$DOGHUMCOM" = "upgrade" ]] && [[ -n "$DOGHUMARG" ]]; then
             if [[ "$DOGHUMLTS" != "$DOGHUMIND" ]]; then
                 if [[ "$DOGHUMARG" = "doghum" ]]; then
                     wget -q -N --show-progress https://raw.githubusercontent.com/DokterW/doghum/master/upgrade_doghum.sh -P $HOME/.dokter/doghum/
+                    chmod +x $HOME/.dokter/doghum/upgrade_doghum.sh
                     exec $HOME/.dokter/doghum/upgrade_doghum.sh
                 else
                     doghumbashdl
