@@ -18,6 +18,14 @@ The main focus on this script will be for my scripts and software that is availa
 
 The software lists will be fetched directly from this github repo and will therefore be updated without the need of the main script to be updated. Nor any need to continuesly download the list to your computer.
 
+## How to install
+
+`wget https://raw.githubusercontent.com/DokterW/doghum/master/install_doghum.sh`
+
+`chmod +x install_doghum.sh`
+
+`./install_doghum.sh`
+
 ## How to use it
 
 **doghum <command> [<arg>]**
