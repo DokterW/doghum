@@ -1,5 +1,6 @@
-coinbash,A simple script that fetches BTC, ETH  & LTC currency rate from coinbase.com.
+coinbash,A simple script that fetches BTC, ETH & LTC currency rate from coinbase.com.
 ddg-cli,DuckDuckGo cli.
+docfeeder,A CLI RSS Reader.
 DogHum,A (pseudo) packet manager for  GitHub.
 emailcheck,Check if an email exists or not.
 fnugg,A simple weather script that fetches weather data from darksky.net.
