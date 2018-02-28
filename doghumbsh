@@ -6,6 +6,7 @@ emailcheck,Check if an email exists or not.
 fnugg,A simple weather script that fetches weather data from darksky.net.
 fupr,Fedora Upgrader Redux makes it easier to keep your system updated and hassle free upgrade to the next beta release.
 geektime,See Unix Time, Internet Time and local time.
+hibp-cli,Have I Been Pwned CLI.
 LazyGit,The perfect script for a lazy git.
 LazyLudicr,Create encrypted disk images with LUKS -- the lazy way.
 reSHsync,A simple manager for your Resilio Sync folders.
