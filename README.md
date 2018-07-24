@@ -1,5 +1,9 @@
 # Dokter's GitHub Manager
 
+### doghum will not be updated from here on. It has reached EOL.
+### What you might be looking for and more is [fupr](https://github.com/DokterW/fupr).
+###  
+
 A (pseudo) packet manager for rpms hosted on GitHub and Dokter's bash scripts.
 
 Which is the gist of what this bash script is.
